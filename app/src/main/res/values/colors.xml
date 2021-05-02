@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="conversate_black">#161616</color>
+    <color name="conversate_gold">#CC9A48</color>
+    <color name="conversate_green">#13361C</color>
+    <color name="conversate_white">#DFDFDF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

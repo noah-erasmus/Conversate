@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1084256339766",
+    "project_id": "conversate-47967",
+    "storage_bucket": "conversate-47967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084256339766:android:5c458a4bbdb2f354c69597",
+        "android_client_info": {
+          "package_name": "com.example.conversate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084256339766-fua8kq9jpcfnpdtn300givn559314h23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.conversate",
+            "certificate_hash": "e97f7d9ffc2634436acd439ac9ff9b62900c94a6"
+          }
+        },
+        {
+          "client_id": "1084256339766-5pluola7jmjaavpb3jgeftp7ebaggmcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM7sgsipKd0AjghjoUoK-r6vebw1829Nw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084256339766-5pluola7jmjaavpb3jgeftp7ebaggmcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

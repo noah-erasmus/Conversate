@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthenticationActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/conversate_black"
+    android:padding="60dp">
+
+    <FrameLayout
+        android:id="@+id/auth_fragment_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:id="@+id/login_btn"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:id="@+id/signup_btn"/>
+    </FrameLayout>
+
+<!--    <ImageView-->
+<!--        android:src="@drawable/conversate_logo_square"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_gravity="left"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sign Up"-->
+<!--        android:textColor="@color/conversate_gold"-->
+<!--        android:textSize="32sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginVertical="20dp"-->
+<!--        android:layout_gravity="left"/>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Phone number"-->
+<!--        app:boxBackgroundColor="@color/conversate_black"-->
+<!--        android:textColorHint="@color/conversate_white"-->
+<!--        app:hintTextColor="@color/conversate_gold"-->
+<!--        android:layout_gravity="left">-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="phone"-->
+<!--            android:textColor="@color/conversate_white"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Username"-->
+<!--        app:boxBackgroundColor="@color/conversate_black"-->
+<!--        android:textColorHint="@color/conversate_white"-->
+<!--        app:hintTextColor="@color/conversate_gold"-->
+<!--        android:layout_gravity="left">-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="text"-->
+<!--            android:textColor="@color/conversate_white"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Password"-->
+<!--        app:boxBackgroundColor="@color/conversate_black"-->
+<!--        android:textColorHint="@color/conversate_white"-->
+<!--        app:hintTextColor="@color/conversate_gold"-->
+<!--        android:layout_gravity="left">-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:textColor="@color/conversate_white"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Confirm password"-->
+<!--        app:boxBackgroundColor="@color/conversate_black"-->
+<!--        android:textColorHint="@color/conversate_white"-->
+<!--        app:hintTextColor="@color/conversate_gold"-->
+<!--        android:layout_gravity="left">-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:textColor="@color/conversate_white"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sign Up"-->
+<!--        android:layout_gravity="left"/>-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Log In"-->
+<!--        style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--        app:strokeWidth="1dp"-->
+<!--        app:strokeColor="@color/conversate_gold"-->
+<!--        android:layout_gravity="left"/>-->
+
+</LinearLayout>
