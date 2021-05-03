@@ -2,9 +2,8 @@ package com.example.conversate.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.example.conversate.BaseActivity
 import com.example.conversate.R
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -20,6 +19,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 addToBackStack(null)
                 commit()
             }
+        }
+
+        login_btn_l.setOnClickListener{
+            (activity as BaseActivity).showErrorSnackBar("Hello world!", true)
         }
     }
 }

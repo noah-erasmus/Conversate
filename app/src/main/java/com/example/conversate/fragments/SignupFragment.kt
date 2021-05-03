@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.conversate.AuthenticationActivity
+import com.example.conversate.BaseActivity
 import com.example.conversate.R
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_signup.*
@@ -26,6 +27,13 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 addToBackStack(null)
                 commit()
             }
+        }
+
+        signup_btn_s.setOnClickListener{
+            var email: String = signup_email.text.toString()
+            var password: String = signup_password.text.toString()
+
+            (activity as AuthenticationActivity).registerUser(email, password)
         }
     }
 }
