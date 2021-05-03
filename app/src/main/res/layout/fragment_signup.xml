@@ -90,14 +90,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signup_btn"
+                android:id="@+id/signup_btn_s"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:layout_gravity="left"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_btn"
+                android:id="@+id/login_btn_s"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Log In"

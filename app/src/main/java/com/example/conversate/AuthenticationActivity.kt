@@ -12,18 +12,10 @@ class AuthenticationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_authentication)
 
         val signupFragment = SignupFragment()
-        val loginFragment = LoginFragment()
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.auth_fragment_area, signupFragment)
             commit()
-        }
-
-        signup_btn.setOnClickListener{
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.auth_fragment_area, signupFragment)
-                commit()
-            }
         }
     }
 }
