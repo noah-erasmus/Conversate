@@ -15,8 +15,8 @@
 
         <ImageView
             android:src="@drawable/conversate_logo_square"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
             android:layout_gravity="left"/>
 
         <TextView
@@ -26,7 +26,7 @@
             android:textColor="@color/conversate_gold"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="40dp"
             android:layout_gravity="left"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,14 +62,15 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_btn_l"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:text="Log In"
-            android:layout_gravity="left"/>
+            android:layout_gravity="left"
+            android:layout_marginTop="40dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signup_btn_l"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:text="Sign Up"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeWidth="1dp"

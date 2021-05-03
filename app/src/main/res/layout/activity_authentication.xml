@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".AuthenticationActivity"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="bottom"
     android:background="@color/conversate_black"
-    android:padding="60dp">
+    android:padding="30dp">
 
     <FrameLayout
         android:id="@+id/auth_fragment_area"
