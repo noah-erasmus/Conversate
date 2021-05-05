@@ -15,6 +15,15 @@ class ConversationsActivity : BaseActivity() {
         logout_btn.setOnClickListener{
             logoutUser()
         }
+
+        conversate_toolbar.setOnMenuItemClickListener{menuItem ->
+            when(menuItem.itemId){
+                R.id.more -> {
+                    logoutUser()
+                    true
+                }else -> false
+            }
+        }
     }
 
     fun logoutUser(){
