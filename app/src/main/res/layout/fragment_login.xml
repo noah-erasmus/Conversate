@@ -32,15 +32,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Email"
             app:boxBackgroundColor="@color/conversate_black"
             android:textColorHint="@color/conversate_white"
             app:hintTextColor="@color/conversate_gold"
             android:layout_gravity="left">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_email"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/conversate_white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,6 +54,7 @@
             app:hintTextColor="@color/conversate_gold"
             android:layout_gravity="left">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_password"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
