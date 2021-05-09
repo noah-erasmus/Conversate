@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Conversate">
-        <activity android:name=".ConversationsActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ConversationsActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AuthenticationActivity">
             <intent-filter>
