@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnboardingActivity"
+    android:background="@color/conversate_black">
+    <ImageView
+        android:id="@+id/texture_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/texture_gradient"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/texture_gradient"
+        android:layout_marginTop="-80dp"
+        android:orientation="vertical"
+        android:padding="35dp">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Conversate."
+            android:textColor="@color/conversate_gold"
+            android:textSize="35sp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your account has been created."
+            android:textColor="@color/conversate_white"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="Please enter your desired display name below."
+            android:textColor="@color/conversate_white"
+            android:layout_marginBottom="5dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            app:boxBackgroundColor="@color/conversate_black"
+            android:textColorHint="@color/conversate_white"
+            app:hintTextColor="@color/conversate_gold"
+            android:layout_gravity="left">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/conversate_white"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup_btn_s"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:text="Proceed"
+            android:layout_gravity="left"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
