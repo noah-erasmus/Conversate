@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.conversate.fragments.LoginFragment
 import com.example.conversate.fragments.SignupFragment
+import com.example.conversate.model.User
+import com.example.conversate.utils.Constants
+import com.example.conversate.utils.Firestore
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -40,7 +43,7 @@ class AuthenticationActivity : BaseActivity() {
         }
     }
 
-    fun registerUser(email: String, password: String){
+    fun registerUser(email: String, password: String, phone: String){
         if(email == "" || password == ""){
             showErrorSnackBar("Please enter your Email & Password", true)
         }else{
@@ -49,7 +52,14 @@ class AuthenticationActivity : BaseActivity() {
                     if (task.isSuccessful){
                         val firebaseUser : FirebaseUser = task.result!!.user!!
 
-                        showErrorSnackBar("Successfully registered user id ${firebaseUser.uid}", false)
+                        val user = User(
+                            firebaseUser.uid,
+                            email,
+                            phone
+                        )
+
+                        Firestore().registerUsers(this, user)
+
                         val intent = Intent(this, ConversationsActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -81,5 +91,14 @@ class AuthenticationActivity : BaseActivity() {
                     }
             )
         }
+    }
+
+    fun userRegisteredSuccess(uid: String){
+        showErrorSnackBar("Registered Successfully", false)
+
+        val intent = Intent(this, ConversationsActivity::class.java)
+        intent.putExtra(Constants.LOGGED_IN_ID, uid)
+        startActivity(intent)
+        finish()
     }
 }

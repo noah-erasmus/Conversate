@@ -32,8 +32,9 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         signup_btn_s.setOnClickListener{
             var email: String = signup_email.text.toString()
             var password: String = signup_password.text.toString()
+            var phone: String = signup_phone.text.toString()
 
-            (activity as AuthenticationActivity).registerUser(email, password)
+            (activity as AuthenticationActivity).registerUser(email, password, phone)
         }
     }
 }
