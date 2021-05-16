@@ -1,5 +1,6 @@
 package com.example.conversate
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,6 +32,10 @@ class AuthenticationActivity : BaseActivity() {
         auth = Firebase.auth
     }
 
+    //Prepare sharedpreferences
+    val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+    val editor = sharedPref.edit()
+
     private lateinit var auth : FirebaseAuth
 
     public override fun onStart() {
@@ -54,13 +59,18 @@ class AuthenticationActivity : BaseActivity() {
 
                         val user = User(
                             firebaseUser.uid,
+                                "",
                             email,
                             phone
                         )
 
                         Firestore().registerUsers(this, user)
 
-                        val intent = Intent(this, ConversationsActivity::class.java)
+                        editor.apply{
+                            putString(Constants.LOGGED_IN_ID, firebaseUser.uid)
+                        }
+
+                        val intent = Intent(this, OnboardingActivity::class.java)
                         startActivity(intent)
                         finish()
                     }else{
