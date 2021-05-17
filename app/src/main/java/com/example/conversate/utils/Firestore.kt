@@ -1,5 +1,6 @@
 package com.example.conversate.utils
 
+import android.widget.Toast
 import com.example.conversate.AuthenticationActivity
 import com.example.conversate.BaseActivity
 import com.example.conversate.OnboardingActivity
@@ -25,7 +26,11 @@ class Firestore {
     }
 
     fun setUsername(activity: OnboardingActivity, userId: String, username: String){
-        db.collection(Constants.USERS).document(userId).update("name", username)
+        db.collection(Constants.USERS).document(userId).update("name", username).addOnSuccessListener {
+            println("usn set")
+        }.addOnFailureListener {
+            println("usn not set")
+        }
     }
 
 //    fun getUserOnboarding(activity: OnboardingActivity, userId: String){

@@ -32,10 +32,6 @@ class AuthenticationActivity : BaseActivity() {
         auth = Firebase.auth
     }
 
-    //Prepare sharedpreferences
-    val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
-    val editor = sharedPref.edit()
-
     private lateinit var auth : FirebaseAuth
 
     public override fun onStart() {
@@ -49,6 +45,10 @@ class AuthenticationActivity : BaseActivity() {
     }
 
     fun registerUser(email: String, password: String, phone: String){
+        //Prepare sharedpreferences
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
         if(email == "" || password == ""){
             showErrorSnackBar("Please enter your Email & Password", true)
         }else{
@@ -64,15 +64,13 @@ class AuthenticationActivity : BaseActivity() {
                             phone
                         )
 
-                        Firestore().registerUsers(this, user)
-
                         editor.apply{
                             putString(Constants.LOGGED_IN_ID, firebaseUser.uid)
+                            apply()
                         }
 
-                        val intent = Intent(this, OnboardingActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                        Firestore().registerUsers(this, user)
+
                     }else{
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
@@ -106,7 +104,7 @@ class AuthenticationActivity : BaseActivity() {
     fun userRegisteredSuccess(uid: String){
         showErrorSnackBar("Registered Successfully", false)
 
-        val intent = Intent(this, ConversationsActivity::class.java)
+        val intent = Intent(this, OnboardingActivity::class.java)
         intent.putExtra(Constants.LOGGED_IN_ID, uid)
         startActivity(intent)
         finish()

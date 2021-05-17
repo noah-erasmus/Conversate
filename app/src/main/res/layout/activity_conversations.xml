@@ -37,12 +37,4 @@
             android:textColor="@color/conversate_white"/>
     </LinearLayout>
 
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"/>
-
 </LinearLayout>

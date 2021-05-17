@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.conversate.model.User
 import com.example.conversate.utils.Constants
 import com.example.conversate.utils.Firestore
