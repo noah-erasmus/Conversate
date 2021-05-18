@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="161616" />
-                            <entry key="outputName" value="logout_icon" />
+                            <entry key="color" value="cc9a48" />
+                            <entry key="outputName" value="logout_gold_icon" />
                             <entry key="sourceFile" value="E:\Android Projects\Conversate" />
                           </map>
                         </option>

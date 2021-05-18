@@ -1,6 +1,7 @@
 package com.example.conversate
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.conversate.model.User
@@ -19,6 +20,12 @@ class ProfileActivity : AppCompatActivity() {
         val userId = sharedPref.getString(Constants.LOGGED_IN_ID, "uidHash")
 
         Firestore().getUserInfoById(this, userId!!)
+
+        profile_appbar.setNavigationOnClickListener {
+            val intent = Intent(this, ConversationsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun setUserInfo(userInfo: User){
