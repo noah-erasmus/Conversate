@@ -72,6 +72,7 @@
                 android:gravity="right"
                 android:paddingVertical="10dp">
                 <ImageButton
+                    android:id="@+id/edit_phone"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/edit_white"
@@ -110,6 +111,7 @@
                 android:gravity="right"
                 android:paddingVertical="10dp">
                 <ImageButton
+                    android:id="@+id/edit_email"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/edit_white"

@@ -4,9 +4,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageButton
+import android.widget.Toast
 import com.example.conversate.model.User
 import com.example.conversate.utils.Constants
 import com.example.conversate.utils.Firestore
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -26,6 +33,15 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        materialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
+        floatingActionButton = findViewById(R.id.edit_phone)
+
+        floatingActionButton.setOnClickListener(View.OnClickListener {
+            customAlertDialogView = LayoutInflater.from(this).inflate(R.layout.edit_phone_dialog, null, false)
+
+            launchCustomAlertDialog()
+        })
     }
 
     fun setUserInfo(userInfo: User){
@@ -33,4 +49,30 @@ class ProfileActivity : AppCompatActivity() {
         profile_email.text = userInfo.email
         profile_number.text = userInfo.phone
     }
+
+    private fun launchCustomAlertDialog(){
+        numberTextField = customAlertDialogView.findViewById(R.id.edit_phone_field)
+
+        materialAlertDialogBuilder.setView(customAlertDialogView)
+                .setTitle("Edit Phone")
+                .setMessage("Enter your new phone number.")
+                .setPositiveButton("Change"){dialog, _ ->
+                    val number = numberTextField.editText?.text.toString()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel"){dialog, _ ->
+                    displayMessage("Operation cancelled.")
+                    dialog.dismiss()
+                }
+                .show()
+    }
+
+    private fun displayMessage(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private lateinit var materialAlertDialogBuilder: MaterialAlertDialogBuilder
+    private lateinit var floatingActionButton: ImageButton
+    private lateinit var customAlertDialogView: View
+    private lateinit var numberTextField: TextInputLayout
 }
