@@ -36,6 +36,18 @@ class Firestore {
         }
     }
 
+    fun setPhone(activity: ProfileActivity, userId: String, phone:String){
+        db.collection(Constants.USERS).document(userId).update("phone", phone).addOnSuccessListener {
+            Toast.makeText(activity, "Phone number updated.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun setEmail(activity: ProfileActivity, userId: String, email:String){
+        db.collection(Constants.USERS).document(userId).update("email", email).addOnSuccessListener {
+            Toast.makeText(activity, "Email updated.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     fun getUserInfoById(activity: ProfileActivity, userId: String){
         db.collection(Constants.USERS).document(userId).get().addOnSuccessListener { document ->
             if(document != null){

@@ -35,12 +35,19 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         materialAlertDialogBuilder = MaterialAlertDialogBuilder(this)
-        floatingActionButton = findViewById(R.id.edit_phone)
+        editPhoneButton = findViewById(R.id.edit_phone)
+        editEmailButton = findViewById(R.id.edit_email)
 
-        floatingActionButton.setOnClickListener(View.OnClickListener {
+        editPhoneButton.setOnClickListener(View.OnClickListener {
             customAlertDialogView = LayoutInflater.from(this).inflate(R.layout.edit_phone_dialog, null, false)
 
-            launchCustomAlertDialog()
+            launchEditPhoneDialog()
+        })
+
+        editEmailButton.setOnClickListener(View.OnClickListener {
+            customAlertDialogView = LayoutInflater.from(this).inflate(R.layout.edit_email_dialog, null, false)
+
+            launchEditEmailDialog()
         })
     }
 
@@ -50,7 +57,18 @@ class ProfileActivity : AppCompatActivity() {
         profile_number.text = userInfo.phone
     }
 
-    private fun launchCustomAlertDialog(){
+    fun updatePhone(number: String){
+        profile_number.text = number
+    }
+
+    fun updateEmail(email: String){
+        profile_email.text = email
+    }
+
+    private fun launchEditPhoneDialog(){
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val userId = sharedPref.getString(Constants.LOGGED_IN_ID, "uidHash")
+
         numberTextField = customAlertDialogView.findViewById(R.id.edit_phone_field)
 
         materialAlertDialogBuilder.setView(customAlertDialogView)
@@ -58,6 +76,30 @@ class ProfileActivity : AppCompatActivity() {
                 .setMessage("Enter your new phone number.")
                 .setPositiveButton("Change"){dialog, _ ->
                     val number = numberTextField.editText?.text.toString()
+                    Firestore().setPhone(this, userId!!, number)
+                    updatePhone(number)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancel"){dialog, _ ->
+                    displayMessage("Operation cancelled.")
+                    dialog.dismiss()
+                }
+                .show()
+    }
+
+    private fun launchEditEmailDialog(){
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val userId = sharedPref.getString(Constants.LOGGED_IN_ID, "uidHash")
+
+        emailTextField = customAlertDialogView.findViewById(R.id.edit_email_field)
+
+        materialAlertDialogBuilder.setView(customAlertDialogView)
+                .setTitle("Edit Email")
+                .setMessage("Enter your new email.")
+                .setPositiveButton("Change"){dialog, _ ->
+                    val email = emailTextField.editText?.text.toString()
+                    Firestore().setEmail(this, userId!!, email)
+                    updateEmail(email)
                     dialog.dismiss()
                 }
                 .setNegativeButton("Cancel"){dialog, _ ->
@@ -72,7 +114,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private lateinit var materialAlertDialogBuilder: MaterialAlertDialogBuilder
-    private lateinit var floatingActionButton: ImageButton
+    private lateinit var editPhoneButton: ImageButton
+    private lateinit var editEmailButton: ImageButton
     private lateinit var customAlertDialogView: View
     private lateinit var numberTextField: TextInputLayout
+    private lateinit var emailTextField: TextInputLayout
 }
