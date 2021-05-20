@@ -22,18 +22,22 @@ class AuthenticationActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authentication)
 
+        //Prepare variable for signup fragment
         val signupFragment = SignupFragment()
 
+        //Apply signup fragment by default
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.auth_fragment_area, signupFragment)
             commit()
         }
 
+        //Prepare firebase authentication
         auth = Firebase.auth
     }
 
     private lateinit var auth : FirebaseAuth
 
+    //On app start determine if there is an active user
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
@@ -44,19 +48,22 @@ class AuthenticationActivity : BaseActivity() {
         }
     }
 
+    //Add new user to firestore and set active user ID
     fun registerUser(email: String, password: String, phone: String){
-        //Prepare sharedpreferences
+        //Prepare SharedPreferences
         val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
 
+        //Check no fields are empty
         if(email == "" || password == ""){
             showErrorSnackBar("Please enter your Email & Password", true)
         }else{
+            //Create user with email and password
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener(
                 OnCompleteListener<AuthResult> { task ->
                     if (task.isSuccessful){
+                        //Set active user information
                         val firebaseUser : FirebaseUser = task.result!!.user!!
-
                         val user = User(
                             firebaseUser.uid,
                                 "",
@@ -64,14 +71,16 @@ class AuthenticationActivity : BaseActivity() {
                             phone
                         )
 
+                        //Store active user ID in SharedPreferences
                         editor.apply{
                             putString(Constants.LOGGED_IN_ID, firebaseUser.uid)
                             apply()
                         }
 
+                        //Run firestore register method
                         Firestore().registerUsers(this, user)
-
                     }else{
+                        //Catch error
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
@@ -79,21 +88,33 @@ class AuthenticationActivity : BaseActivity() {
         }
     }
 
+    //Log into existing user and set active user ID
     fun loginUser(email: String, password: String){
+        //Prepare SharedPreferences
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
         if(email == "" || password == ""){
             showErrorSnackBar("Please enter your Email & Password", true)
         }else{
+            //Log in user with email and password
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(
                     OnCompleteListener { task ->
                         if(task.isSuccessful){
+                            //Set active user information
                             val firebaseUser : FirebaseUser = task.result!!.user!!
-
                             val user = auth.currentUser
-
                             val intent = Intent(this, ConversationsActivity::class.java)
                             startActivity(intent)
                             finish()
+
+                            //Store active user ID in SharedPreferences
+                            editor.apply{
+                                putString(Constants.LOGGED_IN_ID, firebaseUser.uid)
+                                apply()
+                            }
                         }else{
+                            //Catch error
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     }
@@ -101,6 +122,7 @@ class AuthenticationActivity : BaseActivity() {
         }
     }
 
+    //Deal with successful user registration
     fun userRegisteredSuccess(uid: String){
         showErrorSnackBar("Registered Successfully", false)
 

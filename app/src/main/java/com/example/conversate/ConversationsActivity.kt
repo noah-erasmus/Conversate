@@ -17,25 +17,33 @@ class ConversationsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversations)
+        //Set conversate toolbar as action bar
         setSupportActionBar(conversate_toolbar)
     }
 
+    //Inflate more options menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.conversations_app_bar, menu)
         return true
     }
 
-
+    //Handle toolbar option selection
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Toast.makeText(this, "blah", Toast.LENGTH_SHORT)
+
+        //Get ID of selected item
         val id = item.itemId
+
+        //Navigate to profile page
         if(id == R.id.profile_btn){
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
             return true
         }
+
+        //Logout active user
         if(id == R.id.logout_btn){
             logoutUser()
             return true
@@ -43,6 +51,7 @@ class ConversationsActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //Logout user and redirect to authentication
     fun logoutUser(){
         Firebase.auth.signOut()
 

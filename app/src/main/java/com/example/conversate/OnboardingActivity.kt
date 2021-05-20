@@ -15,16 +15,22 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
 
+        //Prepare SharedPrefences
         val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
 
+        //Get active user ID from SharedPrefs
         val userId = sharedPref.getString(Constants.LOGGED_IN_ID, "uidHash")
 
+        //Proceed after completing onboarding
         onboarding_proceed.setOnClickListener{
+            //Get value from text input
             val username = setUsername_btn.text.toString()
 
+            //Run firestore add user method
             Firestore().setUsername(this, userId!!, username)
 
+            //Redirect to conversations page
             val intent = Intent(this, ConversationsActivity::class.java)
             startActivity(intent)
             finish()

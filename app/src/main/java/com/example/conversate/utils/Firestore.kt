@@ -13,10 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
 class Firestore {
+    //Get firestore db
     private val db = FirebaseFirestore.getInstance()
 
+    //Adds new user document to firestore
     fun registerUsers(activity: AuthenticationActivity, userInfo: User){
-
         db.collection(Constants.USERS)
             .document(userInfo.id)
             .set(userInfo, SetOptions.merge())
@@ -28,6 +29,7 @@ class Firestore {
             }
     }
 
+    //Updates username in existing document
     fun setUsername(activity: OnboardingActivity, userId: String, username: String){
         db.collection(Constants.USERS).document(userId).update("name", username).addOnSuccessListener {
             println("usn set")
@@ -36,18 +38,21 @@ class Firestore {
         }
     }
 
+    //Updates phone in existing document
     fun setPhone(activity: ProfileActivity, userId: String, phone:String){
         db.collection(Constants.USERS).document(userId).update("phone", phone).addOnSuccessListener {
             Toast.makeText(activity, "Phone number updated.", Toast.LENGTH_SHORT).show()
         }
     }
 
+    //Updates email in existing document
     fun setEmail(activity: ProfileActivity, userId: String, email:String){
         db.collection(Constants.USERS).document(userId).update("email", email).addOnSuccessListener {
             Toast.makeText(activity, "Email updated.", Toast.LENGTH_SHORT).show()
         }
     }
 
+    //Get user info object by ID
     fun getUserInfoById(activity: ProfileActivity, userId: String){
         db.collection(Constants.USERS).document(userId).get().addOnSuccessListener { document ->
             if(document != null){
