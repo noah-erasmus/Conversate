@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../AndroidSDK/icons/material/materialicons/send/baseline_send_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../AndroidSDK/icons/material/materialicons/add/baseline_add_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="161616" />
-                            <entry key="outputName" value="send_black_icon" />
+                            <entry key="outputName" value="add_black_icon" />
                             <entry key="sourceFile" value="E:\Android Projects\Conversate" />
                           </map>
                         </option>

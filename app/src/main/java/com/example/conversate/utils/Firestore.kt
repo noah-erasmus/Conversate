@@ -1,18 +1,23 @@
 package com.example.conversate.utils
 
 import android.content.ContentValues.TAG
+import android.os.Message
 import android.util.Log
 import android.widget.Toast
-import com.example.conversate.AuthenticationActivity
-import com.example.conversate.BaseActivity
-import com.example.conversate.OnboardingActivity
-import com.example.conversate.ProfileActivity
+import com.example.conversate.*
+import com.example.conversate.model.Memo
 import com.example.conversate.model.User
 import com.google.firebase.auth.UserInfo
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class Firestore {
     //Get firestore db
@@ -70,5 +75,13 @@ class Firestore {
 
     private val  messagesdb = Firebase.firestore.collection(Constants.MESSAGES)
 
-//    fun sendMessage(activity: )
+    fun sendMessage(activity: ChatActivity, memo: Memo) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            messagesdb.add(memo).await()
+        } catch (e: Exception){
+            withContext(Dispatchers.Main){
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 }

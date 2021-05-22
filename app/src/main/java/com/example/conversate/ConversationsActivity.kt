@@ -19,6 +19,12 @@ class ConversationsActivity : BaseActivity() {
         setContentView(R.layout.activity_conversations)
         //Set conversate toolbar as action bar
         setSupportActionBar(conversate_toolbar)
+
+        conversations_fab.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     //Inflate more options menu
