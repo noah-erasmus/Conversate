@@ -11,6 +11,8 @@ import com.example.conversate.model.User
 import com.google.firebase.auth.UserInfo
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class Firestore {
     //Get firestore db
@@ -65,4 +67,8 @@ class Firestore {
             Log.d(TAG, "Get failed with ", exception)
         }
     }
+
+    private val  messagesdb = Firebase.firestore.collection(Constants.MESSAGES)
+
+//    fun sendMessage(activity: )
 }

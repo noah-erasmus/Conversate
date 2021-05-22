@@ -8,4 +8,6 @@ object Constants {
     const val  LOGGED_IN_EMAIL: String = "logged_in_email"
 
     const val  LOGGED_IN_PHONE: String = "logged_in_phone"
+
+    const val  MESSAGES: String = "messages"
 }
