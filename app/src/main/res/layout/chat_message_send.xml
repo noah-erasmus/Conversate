@@ -6,16 +6,23 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_left_spacer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         android:backgroundTint="@color/conversate_gold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chat_right_spacer"
+        app:layout_constraintStart_toEndOf="@+id/chat_left_spacer"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constrainedWidth="true"
-        app:layout_constraintHorizontal_bias="0.0">
+        app:layout_constraintHorizontal_bias="1.0">
         <TextView
             android:layout_margin="5dp"
             android:id="@+id/message_contents"
@@ -24,11 +31,6 @@
             android:text="Hey dude"/>
     </com.google.android.material.card.MaterialCardView>
 
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/chat_right_spacer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.conversate
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
@@ -25,9 +26,15 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        //Prepare SharedPreferences
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+
+        //Get active userID from SharedPrefs
+        val userId = sharedPref.getString(Constants.LOGGED_IN_ID, "uidHash")
+
         send_card.setOnClickListener {
             val content = message_content.text.toString()
-            val memo = Memo( content, "Noah", false)
+            val memo = Memo( content, userId!!, false)
             Firestore().sendMessage(this, memo)
         }
 
@@ -36,7 +43,6 @@ class ChatActivity : AppCompatActivity() {
 
     fun subcribeToMemoUpdates(){
         messagesdb.addSnapshotListener{querySnapshot: QuerySnapshot?, error: FirebaseFirestoreException? ->
-
 
             error?.let {
                 Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
@@ -53,8 +59,6 @@ class ChatActivity : AppCompatActivity() {
 
                 val recyclerView = findViewById<RecyclerView>(R.id.rvMessages)
                 recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-//                val memos = ArrayList<Memo>()
-//                memos.add(Memo("YO YO YO", "Noah"))
                 val adapter = ChatAdapter(memoList)
                 recyclerView.adapter = adapter
             }
