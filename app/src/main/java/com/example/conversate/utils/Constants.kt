@@ -9,7 +9,7 @@ object Constants {
 
     const val  LOGGED_IN_PHONE: String = "logged_in_phone"
 
-    const val  LOGGED_IN_NAME: String = "logged_in_name"
+    const val  LOGGED_IN_NAME: String = "Noah"
 
     const val  MESSAGES: String = "messages"
 }

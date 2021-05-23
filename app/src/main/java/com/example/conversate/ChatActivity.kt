@@ -34,7 +34,7 @@ class ChatActivity : AppCompatActivity() {
 
         send_card.setOnClickListener {
             val content = message_content.text.toString()
-            val memo = Memo( content, userId!!, false)
+            val memo = Memo( content, "Ben", false)
             Firestore().sendMessage(this, memo)
         }
 
@@ -58,7 +58,7 @@ class ChatActivity : AppCompatActivity() {
                 }
 
                 val recyclerView = findViewById<RecyclerView>(R.id.rvMessages)
-                recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+                recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
                 val adapter = ChatAdapter(memoList)
                 recyclerView.adapter = adapter
             }

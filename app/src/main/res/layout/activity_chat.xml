@@ -31,7 +31,8 @@
         android:id="@+id/rvMessages"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/chat_topbar">
+        android:layout_below="@+id/chat_topbar"
+        android:paddingBottom="60dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
