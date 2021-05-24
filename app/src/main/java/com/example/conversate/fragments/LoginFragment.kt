@@ -27,6 +27,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             var password : String = login_password.text.toString()
 
             (activity as AuthenticationActivity).loginUser(email, password)
+
         }
     }
 }

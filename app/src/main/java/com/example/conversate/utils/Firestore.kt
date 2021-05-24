@@ -73,6 +73,19 @@ class Firestore {
         }
     }
 
+    fun getUserInfo(activity: ConversationsActivity, userId: String){
+        db.collection(Constants.USERS).document(userId).get().addOnSuccessListener { document ->
+            if(document != null){
+                val user = document.toObject(User::class.java)!!
+                activity.setWelcome(user)
+            }else{
+                Toast.makeText(activity, "The user info is empty.", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "Get failed with ", exception)
+        }
+    }
+
     private val  messagesdb = Firebase.firestore.collection(Constants.MESSAGES)
 
     fun sendMessage(activity: ChatActivity, memo: Memo) = CoroutineScope(Dispatchers.IO).launch {

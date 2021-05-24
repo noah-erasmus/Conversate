@@ -30,6 +30,11 @@ class OnboardingActivity : AppCompatActivity() {
             //Run firestore add user method
             Firestore().setUsername(this, userId!!, username)
 
+            editor.apply{
+                putString(Constants.LOGGED_IN_NAME, username)
+                apply()
+            }
+
             //Redirect to conversations page
             val intent = Intent(this, ConversationsActivity::class.java)
             startActivity(intent)

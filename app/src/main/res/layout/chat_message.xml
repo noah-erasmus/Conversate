@@ -6,26 +6,50 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/received_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal">
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            android:backgroundTint="@color/conversate_gold"
+            android:backgroundTint="@color/conversate_lightblack"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/chat_right_spacer"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constrainedWidth="true"
             app:layout_constraintHorizontal_bias="0.0">
-            <TextView
-                android:layout_margin="5dp"
-                android:id="@+id/receive_message_contents"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hey dude"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:id="@+id/receive_message_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hey dude"
+                    android:textColor="@color/conversate_white"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/message_time_received"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:25"
+                        android:textColor="@color/conversate_grey"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <RelativeLayout
@@ -37,9 +61,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sent_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal">
         <RelativeLayout
             android:layout_width="150dp"
@@ -58,12 +84,33 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constrainedWidth="true"
             app:layout_constraintHorizontal_bias="1.0">
-            <TextView
-                android:layout_margin="5dp"
-                android:id="@+id/send_message_contents"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hey dude"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:id="@+id/send_message_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hey dude"
+                    android:textColor="@color/conversate_black"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="bottom">
+                    <TextView
+                        android:id="@+id/message_time_sent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:25"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/chat_topbar">
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/conversate_toolbar"
+            android:id="@+id/chat_appbar"
             app:title="Contact Name"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"

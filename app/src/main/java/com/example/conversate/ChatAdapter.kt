@@ -1,15 +1,17 @@
 package com.example.conversate
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.example.conversate.model.Memo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.conversate.utils.Constants
 import com.example.conversate.utils.Constants.LOGGED_IN_NAME
 import kotlinx.android.synthetic.main.chat_message.view.*
 
-class ChatAdapter(val memoList: MutableList<Memo>): RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
+class ChatAdapter(val memoList: MutableList<Memo>, val loggedInUser: String): RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.chat_message, parent, false)
         return ViewHolder(v)
@@ -19,12 +21,16 @@ class ChatAdapter(val memoList: MutableList<Memo>): RecyclerView.Adapter<ChatAda
         val currentMemo = memoList[position]
 
         when(currentMemo.user){
-            LOGGED_IN_NAME -> {
+            loggedInUser -> {
                 holder.itemView.send_message_contents.apply {
                     text = currentMemo.content
                     visibility = View.VISIBLE
                 }
-                holder.itemView.receive_message_contents.visibility = View.GONE
+                holder.itemView.message_time_sent.apply {
+                    text = currentMemo.datetime.drop(11).dropLast(3)
+                    visibility = View.VISIBLE
+                }
+                holder.itemView.received_message.visibility = View.GONE
             }
 
             else -> {
@@ -32,7 +38,12 @@ class ChatAdapter(val memoList: MutableList<Memo>): RecyclerView.Adapter<ChatAda
                     text = currentMemo.content
                     visibility = View.VISIBLE
                 }
-                holder.itemView.send_message_contents.visibility = View.GONE
+                holder.itemView.message_time_received.apply {
+                    text = currentMemo.datetime.drop(11).dropLast(3)
+                    visibility = View.VISIBLE
+                }
+                holder.itemView.sent_message.visibility = View.GONE
+
             }
         }
         holder.bindItems(memoList[position])

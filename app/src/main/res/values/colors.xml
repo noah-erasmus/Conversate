@@ -8,4 +8,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="black_alpha_40">#66000000</color>
+    <color name="conversate_lightblack">#2c2c2c</color>
+    <color name="conversate_grey">#cccccc</color>
 </resources>

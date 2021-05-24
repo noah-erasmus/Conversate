@@ -1,5 +1,6 @@
 package com.example.conversate
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,13 +8,20 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
+import com.example.conversate.model.User
+import com.example.conversate.utils.Constants
+import com.example.conversate.utils.Firestore
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_conversations.*
 
 class ConversationsActivity : BaseActivity() {
+
+    private val usersdb = Firebase.firestore.collection(Constants.USERS)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conversations)
@@ -25,6 +33,12 @@ class ConversationsActivity : BaseActivity() {
             startActivity(intent)
             finish()
         }
+
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+
+        val userID = sharedPref.getString(Constants.LOGGED_IN_ID, "not set")
+
+        Firestore().getUserInfo(this, userID!!)
     }
 
     //Inflate more options menu
@@ -64,5 +78,9 @@ class ConversationsActivity : BaseActivity() {
         val intent = Intent(this, AuthenticationActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    fun setWelcome(userInfo: User){
+        conversations_welcome.text = "Welcome, " + userInfo.name + "."
     }
 }

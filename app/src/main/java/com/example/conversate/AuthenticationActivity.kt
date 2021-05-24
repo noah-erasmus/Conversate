@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.conversate.fragments.LoginFragment
 import com.example.conversate.fragments.SignupFragment
 import com.example.conversate.model.User
@@ -14,10 +15,14 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_signup.*
 
 class AuthenticationActivity : BaseActivity() {
+
+    private val usersdb = Firebase.firestore.collection(Constants.USERS)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authentication)
@@ -41,10 +46,38 @@ class AuthenticationActivity : BaseActivity() {
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
+
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
         if(currentUser != null){
+            editor.apply{
+                putString(Constants.LOGGED_IN_ID, currentUser.uid)
+                apply()
+            }
+            usersdb.document(currentUser.uid).get().addOnSuccessListener { document ->
+                editor.apply{
+                    putString(Constants.LOGGED_IN_NAME, document.toObject(User::class.java)!!.name)
+                    apply()
+                }
+            }
+
             val intent = Intent(this, ConversationsActivity::class.java)
             startActivity(intent)
             finish()
+        }
+    }
+
+    fun getUserObject(userId: String){
+
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
+        usersdb.document(userId).get().addOnSuccessListener { document ->
+            editor.apply{
+                putString(Constants.LOGGED_IN_NAME, document.toObject(User::class.java)!!.name)
+                apply()
+            }
         }
     }
 
@@ -104,21 +137,39 @@ class AuthenticationActivity : BaseActivity() {
                             //Set active user information
                             val firebaseUser : FirebaseUser = task.result!!.user!!
                             val user = auth.currentUser
-                            val intent = Intent(this, ConversationsActivity::class.java)
-                            startActivity(intent)
-                            finish()
 
                             //Store active user ID in SharedPreferences
                             editor.apply{
-                                putString(Constants.LOGGED_IN_ID, firebaseUser.uid)
+                                putString(Constants.LOGGED_IN_ID, user.uid)
                                 apply()
                             }
+
+                            getUserObject(user.uid)
+
+
+
+                            val intent = Intent(this, ConversationsActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }else{
                             //Catch error
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     }
             )
+        }
+    }
+
+
+    fun setActiveUserInfo(email: String){
+        val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        usersdb.document(email).get().addOnSuccessListener {document ->
+            Log.d("username: ",document.toObject(User::class.java)!!.name)
+            editor.apply{
+                putString(Constants.LOGGED_IN_NAME, document.toObject(User::class.java)!!.name)
+                apply()
+            }
         }
     }
 
