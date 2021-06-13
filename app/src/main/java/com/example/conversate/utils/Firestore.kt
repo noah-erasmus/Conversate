@@ -4,6 +4,8 @@ import android.content.ContentValues.TAG
 import android.os.Message
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.conversate.*
 import com.example.conversate.model.Memo
 import com.example.conversate.model.User
@@ -85,6 +87,16 @@ class Firestore {
             Log.d(TAG, "Get failed with ", exception)
         }
     }
+
+//    fun getUsersList(activity: ConversationsActivity){
+//        val usersList: MutableList<User> = mutableListOf<User>()
+//        db.collection(Constants.USERS).get().addOnSuccessListener { result ->
+//            for (document in result){
+//                usersList.add(document.toObject(User::class.java))
+//            }
+//        }
+//        activity.populateContactsList(usersList)
+//    }
 
     private val  messagesdb = Firebase.firestore.collection(Constants.MESSAGES)
 
