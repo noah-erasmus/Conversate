@@ -209,7 +209,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * [Kotlin documentation](https://kotlinlang.org/docs/home.html)
 * [Firebase documentation](https://firebase.google.com/docs/reference)
 * [Armand Pretorius](https://github.com/ArmandPretorius)
-* [Background image in sign in/sign up page](https://media.sciencephoto.com/c0/38/76/05/c0387605-800px-wm.jpg)
 
 
 
