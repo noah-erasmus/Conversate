@@ -198,8 +198,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-* **Claudia Ferreira** - 180181@virtualwindow.co.za
-* **Project Link** - https://github.com/ClaudiaAF/Sprecan.git
+* **Noah Erasmus** - 190138@virtualwindow.co.za
+* **Project Link** - https://github.com/noah-erasmus/Conversate.git
 
 
 
