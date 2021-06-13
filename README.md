@@ -142,7 +142,7 @@ Having the latest version of Android Studio installed on your PC will be require
 
 ### Ideation
 
-![Group 135](https://github.com/noah-erasmus/Conversate/blob/main/app/src/main/res/drawable-24/concept_ideation.png)
+![Group 135](https://github.com/noah-erasmus/Conversate/blob/main/app/src/main/res/drawable-v24/concept_ideation.png)
 </br>
 
 ## Development Process
@@ -170,7 +170,7 @@ Having the latest version of Android Studio installed on your PC will be require
 * Ability to send image and voice messages.
 
 ## Mockups
-![Frame 3](https://github.com/noah-erasmus/Conversate/blob/main/app/src/main/res/drawable-24/mockups.png)
+![Frame 3](https://github.com/noah-erasmus/Conversate/blob/main/app/src/main/res/drawable-v24/mockups.png)
 
 ## Video Demonstration
 [Click Here](https://drive.google.com/file/d/1Q-ZkPPnG6Loj9qGGG1605OKn2i4rx-yD/view?usp=sharing) to view the video demonstration of Sprecan
